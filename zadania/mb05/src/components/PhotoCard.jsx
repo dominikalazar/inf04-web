@@ -19,6 +19,7 @@ function PhotoCard({ id, title, description, category, image, alt }) {
           data-bs-toggle="modal"
           data-bs-target={`#zdjecie${id}`}
         >
+          {" "}
           Powiększ
         </button>
       </div>
