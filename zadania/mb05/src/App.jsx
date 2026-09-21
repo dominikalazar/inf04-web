@@ -2,6 +2,7 @@ import "./App.css";
 import CategoryBar from "./components/CategoryBar";
 import Navbar from "./components/Navbar";
 import Gallery from "./components/Gallery";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
         <CategoryBar />
         <Gallery />
       </main>
+
+      <Footer />
     </>
   );
 }
