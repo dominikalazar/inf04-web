@@ -1,4 +1,5 @@
 import "./App.css";
+import CategoryBar from "./components/CategoryBar";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -39,6 +40,10 @@ function App() {
           </div>
         </div>
       </header>
+
+      <main className="container">
+        <CategoryBar />
+      </main>
     </>
   );
 }
