@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 import AddPhotoModal from "./components/AddPhotoModal";
+import FillersOffcanvas from "./components/FilltersOffcanvas";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
       <Footer />
 
       <AddPhotoModal />
+
+      <FillersOffcanvas />
     </>
   );
 }
