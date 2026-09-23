@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 import AddPhotoModal from "./components/AddPhotoModal";
-import FillersOffcanvas from "./components/FilltersOffcanvas";
+import FiltersOffcanvas from "./components/FiltersOffcanvas";
 import photos from "./data/photos.json";
 
 function App() {
@@ -75,7 +75,10 @@ function App() {
 
       <AddPhotoModal />
 
-      <FillersOffcanvas />
+      <FiltersOffcanvas
+        aktywna={aktywnaKategoria}
+        onWybierz={setAktywnaKategoria}
+      />
     </>
   );
 }
