@@ -1,15 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 import CategoryBar from "./components/CategoryBar";
-import Navbar from "./components/Navbar";
-import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
+import Gallery from "./components/Gallery";
+import Navbar from "./components/Navbar";
 import AddPhotoModal from "./components/AddPhotoModal";
 import FiltersOffcanvas from "./components/FiltersOffcanvas";
 import photos from "./data/photos.json";
 
 function App() {
   const [zdjecia, setZdjecia] = useState(photos);
+
   const [aktywnaKategoria, setAktywnaKategoria] = useState("wszystkie");
 
   const widoczne =
@@ -70,6 +71,14 @@ function App() {
           aktywna={aktywnaKategoria}
           onWybierz={setAktywnaKategoria}
         />
+        {widoczne.length === 0 && (
+          <div className="alert alert-warning">
+            Nie znaleziono zdjęć w tej kategorii.
+          </div>
+        )}
+        <p className="text-body-secondary">
+          Wyświetlono {widoczne.length} z {zdjecia.length} zdjęć
+        </p>
 
         {widoczne.length === 0 && (
           <div className="alert alert-warning">
@@ -79,7 +88,6 @@ function App() {
 
         <Gallery zdjecia={widoczne} onUsun={usunZdjecie} />
       </main>
-
       <Footer />
 
       <AddPhotoModal onDodaj={dodajZdjecie} />
