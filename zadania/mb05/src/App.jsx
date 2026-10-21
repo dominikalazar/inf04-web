@@ -6,9 +6,10 @@ import Gallery from "./components/Gallery";
 import Navbar from "./components/Navbar";
 import AddPhotoModal from "./components/AddPhotoModal";
 import FiltersOffcanvas from "./components/FiltersOffcanvas";
+import photos from "./data/photos.json";
 
 function App() {
-  const [zdjecia, setZdjecia] = useState([]);
+  const [zdjecia, setZdjecia] = useState(photos);
 
   const [aktywnaKategoria, setAktywnaKategoria] = useState("wszystkie");
 
