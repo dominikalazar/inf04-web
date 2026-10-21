@@ -6,6 +6,7 @@ import Gallery from "./components/Gallery";
 import Navbar from "./components/Navbar";
 import AddPhotoModal from "./components/AddPhotoModal";
 import FiltersOffcanvas from "./components/FiltersOffcanvas";
+import ZdjecieDnia from "./components/ZdjecieDnia";
 
 function App() {
   const [zdjecia, setZdjecia] = useState([])
@@ -144,6 +145,8 @@ function App() {
         aktywna={aktywnaKategoria}
         onWybierz={setAktywnaKategoria}
       />
+
+      <ZdjecieDnia/>
     </>
   );
 }
