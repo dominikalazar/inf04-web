@@ -1,16 +1,41 @@
-# React + Vite
+# Galeria Podróży
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projekt galerii zdjęć stworzony w React. Aplikacja pozwala przeglądać zdjęcia z różnych miejsc, sortować je według kategorii oraz dodawać własne fotografie. Każde zdjęcie posiada również osobną stronę ze szczegółami.
 
-Currently, two official plugins are available:
+## Możliwości aplikacji
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Wyświetlanie zdjęć z podziałem na kategorie: Góry, Morze i Miasto
+- Filtrowanie zdjęć według wybranej kategorii
+- Wyświetlanie szczegółów zdjęcia po przejściu na `/zdjecie/:id`
+- Formularz umożliwiający dodawanie zdjęć (`/dodaj`)
+- Możliwość usuwania zdjęć oraz oznaczania ich jako ulubione
+- Informacja o ładowaniu danych i obsługa ewentualnych błędów
+- Sekcja „Zdjęcie dnia”, w której wyświetlane jest losowe zdjęcie pobierane z API picsum.photos
+- Obsługa nieprawidłowych adresów za pomocą strony 404
 
-## React Compiler
+## Jak uruchomić projekt?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Po pobraniu projektu należy zainstalować potrzebne zależności, a następnie uruchomić aplikację.
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Po uruchomieniu strona będzie dostępna pod adresem:
+
+`http://localhost:5173`
+
+## Organizacja plików
+
+Kod aplikacji został podzielony na kilka folderów:
+
+- `src/components/` – komponenty wykorzystywane w aplikacji, np. PhotoCard, Gallery, CategoryBar, Layout, Footer i ZdjecieDnia
+- `src/pages/` – poszczególne widoki aplikacji: GaleriaPage, ZdjeciePage, DodajPage oraz NotFoundPage
+- `src/services/` – pliki odpowiedzialne za pobieranie i obsługę danych (`zdjecia.js`)
+- `src/hooks/` – własny hook `useZdjecia` do zarządzania stanem zdjęć
+- `public/photos.json` – plik zawierający początkową listę zdjęć
+
+## Wykorzystane technologie
+
+Do wykonania projektu wykorzystano **React** oraz **Vite**. Za przechodzenie między podstronami odpowiada **React Router**, natomiast do wyglądu i stylowania elementów użyto **Bootstrap**.
