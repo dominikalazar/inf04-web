@@ -12,4 +12,17 @@ describe("CategoryBar", () => {
 
     expect(onWybierz).toHaveBeenCalledWith("gory");
   });
+
+  it("oznacza aktywną kategorię przez aria-pressed", () => {
+    render(<CategoryBar aktywna="gory" onWybierz={() => {}} />);
+
+    expect(screen.getByRole("button", { name: "Góry" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
+    expect(screen.getByRole("button", { name: "Morze" })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
+  });
 });
