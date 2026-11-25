@@ -5,11 +5,30 @@ function App() {
   const [przepisy, setPrzepisy] = useState(przepisyStartowe)
   const [rosnaco, setRosnaco] = useState(true)
   const [nazwa, setNazwa] = useState('')
-    const [czas, setCzas] = useState('')
-  
+  const [czas, setCzas] = useState('')
+  const [bladCzasu, setBladCzasu] = useState('')
+
   const posortowane = [...przepisy].sort((a, b) =>
     rosnaco ? a.czas - b.czas : b.czas - a.czas
   )
+
+  function zapisz(event) {
+    event.preventDefault()
+
+    if (!(Number(czas) > 0)) {
+      setBladCzasu('Czas musi być liczbą dodatnią.')
+      return
+    }
+
+    setBladCzasu('')
+    const noweId = Math.max(...przepisy.map(p => p.id)) + 1
+    setPrzepisy([
+      ...przepisy,
+      { id: noweId, nazwa, kategoria: 'inne', czas: Number(czas) },
+    ])
+    setNazwa('')
+    setCzas('')
+  }
 
   return (
     <div className="container mt-4">
@@ -40,31 +59,34 @@ function App() {
       </div>
 
       <h2 className="h4">Dodaj przepis</h2>
-        <form className="mb-5">
-          <div className="mb-3">
-            <label htmlFor="nazwa" className="form-label">Nazwa</label>
-            <input
-              id="nazwa"
-              type="text"
-              className="form-control"
-              value={nazwa}
-              onChange={event => setNazwa(event.target.value)}
-            />
-          </div>
+      <form onSubmit={zapisz} className="mb-5">
+        <div className="mb-3">
+          <label htmlFor="nazwa" className="form-label">Nazwa</label>
+          <input
+            id="nazwa"
+            type="text"
+            className="form-control"
+            value={nazwa}
+            onChange={event => setNazwa(event.target.value)}
+          />
+        </div>
 
-          <div className="mb-3">
-            <label htmlFor="czas" className="form-label">Czas przygotowania (min)</label>
-            <input
-              id="czas"
-              type="number"
-              className={`form-control`}
-              value={czas}
-              onChange={event => setCzas(event.target.value)}
-            />
-          </div>
+        <div className="mb-3">
+          <label htmlFor="czas" className="form-label">Czas przygotowania (min)</label>
+          <input
+            id="czas"
+            type="number"
+            className={`form-control${bladCzasu ? ' is-invalid' : ''}`}
+            value={czas}
+            onChange={event => setCzas(event.target.value)}
+          />
+          {bladCzasu && (
+            <div className="invalid-feedback d-block">{bladCzasu}</div>
+          )}
+        </div>
 
-          <button type="submit" className="btn btn-primary">Zapisz</button>
-        </form>
+        <button type="submit" className="btn btn-primary">Zapisz</button>
+      </form>
     </div>
   )
 }
